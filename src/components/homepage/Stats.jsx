@@ -2,7 +2,7 @@ import { statsInfo } from "@/dummy";
 
 export default function Stats() {
   return (
-    <div className="w-full">
+    <section className="w-full">
       <div className="xl:max-w-[1440px] mx-auto xl:w-full xl:grid xl:grid-cols-3 py-20 border-b border-b-secondary-100">
         {statsInfo?.map((statInfo) => (
           <StatCard
@@ -12,7 +12,7 @@ export default function Stats() {
           />
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 
