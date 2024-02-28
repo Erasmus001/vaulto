@@ -16,8 +16,7 @@ export const statsInfo = [
   },
 ];
 
-export const pricingPlans = [];
-
+//* Features Lists
 export const features = [
   {
     featureId: 1,
@@ -46,5 +45,115 @@ export const features = [
     featureDescription: "Feature Four description",
     featureIndex: "04",
     featureImg: "",
+  },
+];
+
+//* Pricing Model
+export const pricingModel = [
+  {
+    id: 1,
+    isPopular: false,
+    plan: "Starter",
+    description: "File storage for a limited number of users of your school.",
+    price: "Free",
+    range: "Forever",
+    features: [
+      {
+        featureId: 1,
+        feature: "Feature 1",
+        isDisabled: false,
+      },
+      {
+        featureId: 2,
+        feature: "Feature 2",
+        isDisabled: false,
+      },
+      {
+        featureId: 3,
+        feature: "Feature 3",
+        isDisabled: false,
+      },
+      {
+        featureId: 4,
+        feature: "Feature 4",
+        isDisabled: false,
+      },
+      {
+        featureId: 5,
+        feature: "Feature 5",
+        isDisabled: true,
+      },
+    ],
+  },
+  {
+    id: 2,
+    isPopular: true,
+    plan: "Business Plus",
+    description: "File storage for your entire school management",
+    price: "$250",
+    range: "per month",
+    features: [
+      {
+        featureId: 1,
+        feature: "Feature 1",
+        isDisabled: false,
+      },
+      {
+        featureId: 2,
+        feature: "Feature 2",
+        isDisabled: false,
+      },
+      {
+        featureId: 3,
+        feature: "Feature 3",
+        isDisabled: false,
+      },
+      {
+        featureId: 4,
+        feature: "Feature 4",
+        isDisabled: false,
+      },
+      {
+        featureId: 5,
+        feature: "Feature 5",
+        isDisabled: false,
+      },
+    ],
+  },
+  {
+    id: 3,
+    isPopular: false,
+    plan: "Enterprise",
+    description:
+      "Advanced file storage with regular backups and security checks.",
+    price: "$400",
+    range: "per month",
+    features: [
+      {
+        featureId: 1,
+        feature: "Feature 1",
+        isDisabled: false,
+      },
+      {
+        featureId: 2,
+        feature: "Feature 2",
+        isDisabled: false,
+      },
+      {
+        featureId: 3,
+        feature: "Feature 3",
+        isDisabled: false,
+      },
+      {
+        featureId: 4,
+        feature: "Feature 4",
+        isDisabled: false,
+      },
+      {
+        featureId: 5,
+        feature: "Feature 5",
+        isDisabled: false,
+      },
+    ],
   },
 ];
