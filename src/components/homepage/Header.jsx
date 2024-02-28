@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Header() {
   return (
-    <header className="w-full xl:h-20 lg:h-20 md:h-20 border-b border-b-secondary-100 xl:top-0 xl:sticky xl:z-50 xl:bg-white">
+    <header className="w-full xl:h-20 lg:h-20 md:h-20 border-b border-b-secondary-100 xl:top-0 xl:sticky xl:z-[999px] xl:left-0 xl:bg-white">
       <div className="w-full h-full flex items-center justify-between xl:max-w-[1440px] mx-auto">
         <div className="flex flex-1 items-center justify-start gap-20">
           <div>

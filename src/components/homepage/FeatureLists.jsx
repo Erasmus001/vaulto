@@ -9,13 +9,10 @@ export default function FeatureLists() {
   const [numbers, setNumbers] = useState(["01", "02", "03", "04"]);
   const [activeNumber, setActiveNumber] = useState(numbers[0]);
 
-  // console.log(activeNumber, "active-number");
-
   function handleFeatureChange(index) {
     // todo: .....
 
     setActiveNumber(index);
-    toast.info("clicked", activeNumber);
   }
 
   return (
@@ -56,7 +53,7 @@ export default function FeatureLists() {
 function FeatureCard({ feature, onChange }) {
   return (
     <div
-      className="w-full xl:flex xl:items-start xl:justify-start xl:flex-col xl:gap-3 xl:hover:bg-secondary-100 transition-colors ease-in-out xl:p-5 xl:rounded-lg cursor-pointer"
+      className="w-full xl:flex xl:items-start xl:justify-start xl:flex-col xl:gap-3 xl:hover:bg-secondary-100/50 transition-colors ease-in-out xl:p-5 xl:rounded-lg cursor-pointer"
       onClick={onChange}
       aria-role="button"
     >
