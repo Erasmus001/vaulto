@@ -2,7 +2,7 @@ export default function PricingCard({ isPopular, data }) {
   return (
     <div
       className={`w-full h-full flex items-center justify-center rounded-3xl flex-col px-2 pb-2 ${
-        isPopular ? "bg-primary-normal" : "bg-transparent"
+        isPopular ? "bg-primary-light" : "bg-transparent"
       }`}
     >
       <div className={`py-2 ${isPopular ? "visible" : "bg-transparent"} h-10`}>
@@ -32,7 +32,7 @@ export default function PricingCard({ isPopular, data }) {
           </div>
 
           <div className="w-full">
-            <button className="w-full p-4 bg-primary-normal text-white rounded-xl cursor-pointer hover:bg-primary-deep transition-colors ease-in-out text-lg">
+            <button className="w-full p-4 bg-primary-light text-white rounded-xl cursor-pointer hover:bg-primary-deep transition-colors ease-in-out text-lg">
               Get started
             </button>
           </div>

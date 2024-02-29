@@ -1,9 +1,10 @@
 import { statsInfo } from "@/dummy";
+import { Wrapper } from "./Wrapper";
 
 export default function Stats() {
   return (
     <section className="w-full">
-      <div className="xl:max-w-[1440px] mx-auto xl:w-full xl:grid xl:grid-cols-3 py-20 border-b border-b-secondary-100">
+      <Wrapper>
         {statsInfo?.map((statInfo) => (
           <StatCard
             key={statInfo?.id}
@@ -11,7 +12,7 @@ export default function Stats() {
             text={statInfo?.text}
           />
         ))}
-      </div>
+      </Wrapper>
     </section>
   );
 }

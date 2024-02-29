@@ -4,6 +4,7 @@
 import { features } from "@/dummy";
 import { useState } from "react";
 import { toast } from "sonner";
+import { Wrapper } from "./Wrapper";
 
 export default function FeatureLists() {
   const [numbers, setNumbers] = useState(["01", "02", "03", "04"]);
@@ -17,7 +18,7 @@ export default function FeatureLists() {
 
   return (
     <section className="xl:w-full w-full">
-      <div className="xl:max-w-[1440px] mx-auto xl:w-full py-20 xl:flex xl:items-start xl:justify-between xl:gap-20 bg-white">
+      <Wrapper>
         <div className="xl:w-full xl:flex xl:items-start xl:justify-start xl:flex-col xl:gap-8">
           <div className="xl:w-full xl:flex xl:items-start xl:justify-start xl:flex-col xl:gap-4">
             <h2 className="xl:text-4xl xl:font-semibold">Features we offer</h2>
@@ -45,7 +46,7 @@ export default function FeatureLists() {
             </h2>
           </div>
         </div>
-      </div>
+      </Wrapper>
     </section>
   );
 }

@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <section className="w-full flex items-center justify-center flex-col gap-16 pt-28 xl:bg-[#f4f6f8]">
+    <section className="w-full flex items-center justify-center flex-col gap-16 pt-28 xl:bg-[#f4f6f8] mt-20">
       <div className="w-full h-full flex items-center justify-center flex-col gap-14 xl:max-w-[1440px] mx-auto">
         <h2 className="xl:text-7xl xl:text-center xl:max-w-6xl xl:leading-[1.05] xl:font-[545]">
           Join over 400 thousand registered schools who trust Vaulto.
@@ -24,7 +24,7 @@ export default function Hero() {
           </Link>
           <Link
             href="#"
-            className="py-5 px-10 rounded-lg text-lg hover:bg-primary-deep transition-colors ease-in-out bg-primary-light text-white"
+            className="py-4 px-10 rounded-xl text-lg hover:bg-primary-deep transition-colors ease-in-out bg-primary-light text-white"
           >
             Get Started
           </Link>

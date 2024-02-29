@@ -157,3 +157,24 @@ export const pricingModel = [
     ],
   },
 ];
+
+export const differenceData = [
+  {
+    id: Math.ceil(Math.random() * 10000),
+    title: "Sleek & unique dashboard",
+    description:
+      "Store important backups, photo libraries, thousands of files - all your files in one place",
+  },
+  {
+    id: Math.ceil(Math.random() * 10000),
+    title: "All your files in one place",
+    description:
+      "Store important backups, photo libraries, thousands of files - all your files in one place",
+  },
+  {
+    id: Math.ceil(Math.random() * 10000),
+    title: "Ease of use and navigation",
+    description:
+      "Store important backups, photo libraries, thousands of files - all your files in one place",
+  },
+];
