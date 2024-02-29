@@ -18,7 +18,7 @@ export default function CallToActionBanner() {
               href={"/"}
               className="py-3.5 px-8 rounded-xl text-xl hover:bg-white/80 transition-colors ease-in-out bg-white text-primary-normal"
             >
-              Sign up for free
+              Get started
             </Link>
           </div>
         </div>

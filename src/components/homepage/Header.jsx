@@ -6,9 +6,7 @@ export default function Header() {
     <header className="w-full xl:h-20 lg:h-20 md:h-20 border-b border-b-secondary-100 xl:top-0 xl:fixed xl:z-[999px] xl:left-0 xl:bg-white">
       <HeaderWrapper>
         <div className="flex items-center justify-start">
-          <div>
-            <h3 className="font-semibold text-xl">Vaulto</h3>
-          </div>
+          <h3 className="font-semibold text-xl">Vaulto</h3>
         </div>
 
         <nav className="xl:flex xl:items-center xl:justify-start xl:gap-16 xl:text-base lg:text-base md:hidden hidden">
