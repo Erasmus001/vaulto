@@ -1,46 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
 
-"use client";
-
-import { useRef, useState, Fragment } from "react";
+import { Fragment } from "react";
 import Link from "next/link";
-import { toast } from "sonner";
-
-import { useRouter } from "next/navigation";
+import { FormButton } from "@/components/ui/FormButton";
+import { sendForgotPasswordEmail } from "@/actions/server-actions/auth";
 
 export default function ForgotPasswordPage() {
-  const [type, setType] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const emailRef = useRef("");
-  const passwordRef = useRef("");
-
-  const router = useRouter();
-
-  async function register(data) {}
-
-  async function handleSignup(event) {
-    event.preventDefault();
-
-    const email = emailRef.current?.value;
-    const password = passwordRef.current?.value;
-
-    const data = {
-      email,
-      emailVisibility: true,
-      password,
-      passwordConfirm: password,
-      type,
-      username: "",
-    };
-
-    setIsSubmitting(true);
-    const response = await register(data);
-    setIsSubmitting(false);
-
-    toast.error(response?.message || 'Clicked...');
-  }
-
   return (
     <Fragment>
       <div className="min-w-screen min-h-screen py-5 flex items-center justify-center bg-[#f4f6f8] flex-col gap-y-4">
@@ -54,7 +19,7 @@ export default function ForgotPasswordPage() {
           <form
             className="w-full flex items-center justify-center flex-col gap-6"
             autoComplete="on"
-            onSubmit={handleSignup}
+            action={sendForgotPasswordEmail}
           >
             <div className="w-full flex items-start justify-start flex-col gap-2">
               <label htmlFor="email" className="text-sm">
@@ -67,13 +32,10 @@ export default function ForgotPasswordPage() {
                 placeholder="johndoe@email.com"
                 className="w-full fllex items-start justify-start gap-3 p-3 border rounded-md"
                 autoComplete="email"
-                ref={emailRef}
               />
             </div>
             <div className="w-full mt-5">
-              <button className="py-4 px-8 rounded-xl text-lg hover:bg-primary-deep transition-colors ease-in-out bg-primary-light text-white w-full">
-                Send reset link
-              </button>
+              <FormButton title="Send reset link" />
             </div>
           </form>
         </div>

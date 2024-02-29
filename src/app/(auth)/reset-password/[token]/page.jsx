@@ -1,43 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
 
-"use client";
-
-import { useRef, useState, Fragment } from "react";
+import { Fragment } from "react";
 import Link from "next/link";
-import { toast } from "sonner";
-
-import { useRouter } from "next/navigation";
 
 export default function ResetPasswordPage() {
-  const [type, setType] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const newPasswordRef = useRef("");
-  const confirmNewPasswordRef = useRef("");
-
-  const router = useRouter();
-
-  async function register(data) {}
-
-  async function handleSignup(event) {
-    event.preventDefault();
-
-    const newPassword = newPasswordRef.current?.value;
-    const confirmNewPassword = confirmNewPasswordRef.current?.value;
-
-    const data = {
-      emailVisibility: true,
-      password: newPassword,
-      passwordConfirm: confirmNewPassword,
-    };
-
-    setIsSubmitting(true);
-    const response = await register(data);
-    setIsSubmitting(false);
-
-    toast.error(response?.message || "Password reset successful");
-  }
-
   return (
     <Fragment>
       <div className="min-w-screen min-h-screen py-5 flex items-center justify-center bg-[#f4f6f8] flex-col gap-y-4">
