@@ -3,7 +3,6 @@
 
 import { features } from "@/dummy";
 import { useState } from "react";
-import { toast } from "sonner";
 import { Wrapper } from "./Wrapper";
 
 export default function FeatureLists() {
@@ -56,7 +55,6 @@ function FeatureCard({ feature, onChange }) {
     <div
       className="w-full xl:flex xl:items-start xl:justify-start xl:flex-col xl:gap-3 xl:hover:bg-secondary-100/50 transition-colors ease-in-out xl:p-5 xl:rounded-lg cursor-pointer"
       onClick={onChange}
-      aria-role="button"
     >
       <div className="xl:w-full xl:flex xl:items-start xl:justify-start xl:flex-col xl:gap-1">
         <h3 className="text-xl font-semibold text-gray-600">

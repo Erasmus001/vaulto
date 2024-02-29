@@ -10,7 +10,7 @@ function PlansAndPricing() {
 
   return (
     <section className="xl:w-full w-full bg-[#f4f6f8]" id="#pricing">
-      <Wrapper>
+      <Wrapper bgColor={"transpearent"}>
         <div className="w-full flex items-center justify-center flex-col gap-y-20">
           <div className="w-full flex items-center justify-center flex-col gap-7">
             <h2 className="xl:text-5xl xl:font-medium">Plans & Pricing</h2>

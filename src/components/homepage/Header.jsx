@@ -24,7 +24,7 @@ export default function Header() {
             Log in
           </Link>
           <Link
-            href="#"
+            href="/signup"
             className="py-3.5 px-8 rounded-xl text-sm hover:bg-primary-deep transition-colors ease-in-out bg-primary-light text-white"
           >
             Get Started

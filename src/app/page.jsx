@@ -1,5 +1,5 @@
 import Hero from "@/components/homepage/Banner";
-import CalltoActionBanner from "@/components/homepage/CallToActionBanner";
+import CallToActionBanner from "@/components/homepage/CallToActionBanner";
 import Difference from "@/components/homepage/Difference";
 import FeatureLists from "@/components/homepage/FeatureLists";
 import { Footer } from "@/components/homepage/Footer";
@@ -7,7 +7,7 @@ import Header from "@/components/homepage/Header";
 import PlansAndPricing from "@/components/homepage/PlansAndPricing";
 import Stats from "@/components/homepage/Stats";
 
-export default function Homepage() {
+export default function Home() {
   return (
     <main className="min-h-screen min-w-screen">
       <Header />
@@ -16,7 +16,7 @@ export default function Homepage() {
       <FeatureLists />
       <PlansAndPricing />
       <Difference />
-      <CalltoActionBanner />
+      <CallToActionBanner />
       <Footer />
     </main>
   );
