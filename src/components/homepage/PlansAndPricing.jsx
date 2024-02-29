@@ -8,7 +8,7 @@ function PlansAndPricing() {
   const [activePlan, setActivePlan] = useState("individual");
 
   return (
-    <section className="xl:w-full w-full bg-[#f4f6f8]">
+    <section className="xl:w-full w-full bg-[#f4f6f8]" id="#pricing">
       <div className="xl:max-w-[1440px] mx-auto xl:w-full py-28 xl:flex xl:items-center xl:justify-center xl:flex-col xl:gap-16">
         <div className="w-full flex items-center justify-center flex-col gap-7">
           <h2 className="xl:text-5xl xl:font-medium">Plans & Pricing</h2>
