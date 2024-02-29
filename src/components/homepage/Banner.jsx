@@ -17,13 +17,13 @@ export default function Hero() {
 
         <div className="flex items-center justify-center gap-5">
           <Link
-            href="#"
+            href="#plans"
             className="py-5 px-10 rounded-lg text-lg hover:bg-gray-100 transition-colors ease-in-out font-medium"
           >
             Find your plan
           </Link>
           <Link
-            href="#"
+            href="/signup"
             className="py-4 px-10 rounded-xl text-lg hover:bg-primary-deep transition-colors ease-in-out bg-primary-light text-white"
           >
             Get Started

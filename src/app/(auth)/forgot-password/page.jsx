@@ -5,9 +5,10 @@
 import { useRef, useState, Fragment } from "react";
 import Link from "next/link";
 import { toast } from "sonner";
+
 import { useRouter } from "next/navigation";
 
-export default function SignupPage() {
+export default function ForgotPasswordPage() {
   const [type, setType] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -37,23 +38,19 @@ export default function SignupPage() {
     const response = await register(data);
     setIsSubmitting(false);
 
-    toast.error(response?.message);
+    toast.error(response?.message || 'Clicked...');
   }
 
   return (
     <Fragment>
-      <div className="min-w-screen min-h-screen py-5 flex items-center justify-center bg-[#f4f6f8] flex-col gap-y-6">
-        <div className="w-full flex items-center justify-center flex-col gap-y-20 max-w-lg bg-white border p-7 py-10 rounded-xl shadow">
+      <div className="min-w-screen min-h-screen py-5 flex items-center justify-center bg-[#f4f6f8] flex-col gap-y-4">
+        <div className="w-full flex items-center justify-center flex-col gap-y-10 max-w-lg bg-white border p-7 py-10 rounded-xl shadow">
           <div className="flex items-center justify-center flex-col gap-5">
             <div className="w-full flex items-center justify-center flex-col gap-y-3">
-              <h2 className="text-3xl font-semibold">Let's get started!</h2>
-              <p className="text-gray-500 text-base">
-                Your information is safe and secure with us.
-              </p>
+              <h2 className="text-3xl font-semibold">Forgot Password</h2>
             </div>
           </div>
 
-          {/* //* Form */}
           <form
             className="w-full flex items-center justify-center flex-col gap-6"
             autoComplete="on"
@@ -73,39 +70,17 @@ export default function SignupPage() {
                 ref={emailRef}
               />
             </div>
-            <div className="w-full flex items-start justify-start flex-col gap-2">
-              <label htmlFor="password" className="text-sm">
-                Password
-              </label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                placeholder="***********"
-                className="w-full fllex items-start justify-start gap-3 p-3 border rounded-md"
-                autoComplete="password"
-                ref={passwordRef}
-              />
-            </div>
             <div className="w-full mt-5">
               <button className="py-4 px-8 rounded-xl text-lg hover:bg-primary-deep transition-colors ease-in-out bg-primary-light text-white w-full">
-                Sign up
+                Send reset link
               </button>
             </div>
           </form>
         </div>
-        <div className="w-full space-y-2 flex items-center justify-center flex-col">
-          <p>
-            Already have an account? {""}
-            <span>
-              <Link
-                href={"/signin"}
-                className="text-base text-black/70 underline"
-              >
-                Sign in
-              </Link>
-            </span>
-          </p>
+        <div className="w-full space-y-2 flex items-center justify-center flex-col mt-5">
+          <Link href={"/signin"} className="text-base text-black/70 underline">
+            Go back
+          </Link>
         </div>
       </div>
 
