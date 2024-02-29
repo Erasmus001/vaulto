@@ -4,6 +4,7 @@
 
 :root{
   background-color: white;
+  scroll-behavior: smooth;
 }
 
 @layer utilities {
