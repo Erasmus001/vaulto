@@ -18,7 +18,7 @@ export default function Header() {
 
         <div className="xl:flex xl:items-center xl:justify-center xl:gap-3 hidden">
           <Link
-            href="#"
+            href="/signin"
             className="py-4 px-6 rounded-lg transition-colors ease-in-out"
           >
             Log in

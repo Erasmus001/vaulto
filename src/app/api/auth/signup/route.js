@@ -23,8 +23,6 @@ export async function POST(request) {
 
   const response = await record?.json();
 
-  console.log(response, "record response");
-
   return Response.json({
     status: response?.code,
     message: response?.message,

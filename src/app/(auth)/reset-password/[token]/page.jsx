@@ -4,6 +4,10 @@ import { Fragment } from "react";
 import Link from "next/link";
 
 export default function ResetPasswordPage() {
+  async function resetPassword() {
+    "use server";
+  }
+
   return (
     <Fragment>
       <div className="min-w-screen min-h-screen py-5 flex items-center justify-center bg-[#f4f6f8] flex-col gap-y-4">
@@ -23,7 +27,7 @@ export default function ResetPasswordPage() {
           <form
             className="w-full flex items-center justify-center flex-col gap-6"
             autoComplete="on"
-            onSubmit={handleSignup}
+            action={resetPassword}
           >
             <div className="w-full flex items-start justify-start flex-col gap-2">
               <label htmlFor="new-password" className="text-sm">
@@ -36,7 +40,6 @@ export default function ResetPasswordPage() {
                 placeholder="*********"
                 className="w-full fllex items-start justify-start gap-3 p-3 border rounded-md"
                 autoComplete="password"
-                ref={newPasswordRef}
               />
             </div>
             <div className="w-full flex items-start justify-start flex-col gap-2">
@@ -50,7 +53,6 @@ export default function ResetPasswordPage() {
                 placeholder="*********"
                 className="w-full fllex items-start justify-start gap-3 p-3 border rounded-md"
                 autoComplete="password"
-                ref={confirmNewPasswordRef}
               />
             </div>
             <div className="w-full mt-5">

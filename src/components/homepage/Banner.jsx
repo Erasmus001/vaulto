@@ -6,7 +6,7 @@ export default function Hero() {
     <section className="w-full flex items-center justify-center flex-col gap-16 pt-28 xl:bg-[#f4f6f8] mt-20">
       <div className="w-full h-full flex items-center justify-center flex-col gap-14 xl:max-w-[1440px] mx-auto">
         <h2 className="xl:text-7xl xl:text-center xl:max-w-6xl xl:leading-[1.05] xl:font-[545]">
-          Join over 400 thousand registered schools who trust Vaulto.
+          Join over 400 thousand registered schools who trust Vaulto
         </h2>
         <div className="w-full xl:max-w-3xl mx-auto flex items-center justify-center">
           <p className="xl:text-2xl xl:text-center xl:leading-[1.5]">

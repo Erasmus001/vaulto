@@ -1,6 +1,8 @@
 "use server";
 
 const SERVER_API_ENDPOINT = process.env.NEXT_API_URL;
+
+// * Create a user with Email & Password
 export async function createUserWithEmailAndPassword(formData) {
   let identity = formData.get("identity");
   let password = formData.get("password");
@@ -18,6 +20,9 @@ export async function createUserWithEmailAndPassword(formData) {
   const response = await _data?.json();
   return response;
 }
+
+
+// * Log user in with Email & Password
 
 export async function signinUserWithEmailAndPassword(formData) {
   let identity = formData.get("identity");
@@ -37,6 +42,8 @@ export async function signinUserWithEmailAndPassword(formData) {
   return response;
 }
 
+
+// * Send user reset email link
 export async function sendForgotPasswordEmail(formData) {
   let email = formData.get("email");
 
@@ -52,4 +59,11 @@ export async function sendForgotPasswordEmail(formData) {
   return response;
 
   console.log(identity);
+}
+
+
+// * Reset user password
+export async function resetPassword(formData) {
+  let newPassword = formData.get("newPassword");
+  let confirmNewPassword = formData.get("confirmNewPassword");
 }
