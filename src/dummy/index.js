@@ -90,7 +90,7 @@ export const pricingModel = [
     isPopular: true,
     plan: "Business Plus",
     description: "File storage for your entire school management",
-    price: "$250",
+    price: "$20",
     range: "per month",
     features: [
       {
@@ -126,7 +126,7 @@ export const pricingModel = [
     plan: "Enterprise",
     description:
       "Advanced file storage with regular backups and security checks.",
-    price: "$400",
+    price: "$30",
     range: "per month",
     features: [
       {
@@ -176,5 +176,35 @@ export const differenceData = [
     title: "Ease of use and navigation",
     description:
       "Store important backups, photo libraries, thousands of files - all your files in one place",
+  },
+];
+
+// SideLinks
+
+export const sidebarLinks = [
+  {
+    id: 1,
+    href: "/dashboard",
+    title: "Dashboard",
+  },
+  {
+    id: 2,
+    href: "/dashboard/folders",
+    title: "Folders",
+  },
+  {
+    id: 3,
+    href: "/dashboard/recents",
+    title: "Recents",
+  },
+  {
+    id: 4,
+    href: "/dashboard/favourites",
+    title: "Favourites",
+  },
+  {
+    id: 5,
+    href: "/dashboard/trash",
+    title: "Trash",
   },
 ];

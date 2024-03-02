@@ -11,8 +11,8 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Vaulto | School File Management",
-  description: "Safeguard your schoolwork with Vaulto's reliable file storage and backup.",
+  title: "Vaulto Cloud | File Management For Google Drive",
+  description: "Access your google drive more easily and securely with Vaulto.",
 };
 
 export default function RootLayout({ children }) {

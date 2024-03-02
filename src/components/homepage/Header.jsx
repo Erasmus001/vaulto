@@ -10,19 +10,17 @@ export default function Header() {
         </div>
 
         <nav className="xl:flex xl:items-center xl:justify-start xl:gap-16 xl:text-base lg:text-base md:hidden hidden">
-          <Link href="/#">Why Vaulto</Link>
-          <Link href="/#">Solutions</Link>
-          <Link href="/#">Pricing</Link>
-          <Link href="/#">About Us</Link>
+          <Link href="">Our Pricing</Link>
+          <Link href="">About</Link>
         </nav>
 
         <div className="xl:flex xl:items-center xl:justify-center xl:gap-3 hidden">
-          <Link
+          {/* <Link
             href="/signin"
             className="py-4 px-6 rounded-lg transition-colors ease-in-out"
           >
             Log in
-          </Link>
+          </Link> */}
           <Link
             href="/signup"
             className="py-3.5 px-8 rounded-xl text-sm hover:bg-primary-deep transition-colors ease-in-out bg-primary-light text-white"
