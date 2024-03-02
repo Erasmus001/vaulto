@@ -1,4 +1,4 @@
-const API_ENDPOINT = process.env.API_ENDPOINT;
+import { API_ENDPOINT } from "@/components/constants";
 
 export async function POST(request) {
   const data = await request?.json();

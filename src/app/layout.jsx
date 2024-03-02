@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <MantineProvider>
           {children}
-          <Toaster />
+          <Toaster position="top-center" />
           <SpeedInsights />
         </MantineProvider>
       </body>

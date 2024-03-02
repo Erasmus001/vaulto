@@ -1,9 +1,7 @@
-const API_ENDPOINT = process.env.API_ENDPOINT;
+import { API_ENDPOINT } from "@/components/constants";
 
 export async function POST(request) {
   const { email } = await request?.json();
-
-  // console.log(JSON.stringify(email), "request");
 
   const record = await fetch(
     `${API_ENDPOINT}/api/collections/users/request-password-reset`,

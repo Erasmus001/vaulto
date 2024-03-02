@@ -12,7 +12,7 @@ function DashboardLayout({ children }) {
       {/* Main Dashboard View */}
       <section className="w-full flex items-start justify-start flex-col flex-1">
         <DashboardHeader />
-        {children}
+        <div className="w-full h-[calc(100vh-64px)]">{children}</div>
       </section>
     </main>
   );
