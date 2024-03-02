@@ -40,6 +40,7 @@
     "tailwind-merge": "^2.2.1"
   },
   "devDependencies": {
+    "@tanstack/eslint-plugin-query": "^5.20.1",
     "@types/react": "^18.2.60",
     "autoprefixer": "^10.0.1",
     "eslint": "^8",

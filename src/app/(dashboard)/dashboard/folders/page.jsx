@@ -1,6 +1,6 @@
 import { getAllFolders } from "@/actions/client-actions/folders";
+import { FolderCollectionsGrid } from "@/components/dashboard/FolderCollectionsGrid";
 import { FolderHeader } from "@/components/dashboard/FolderHeader";
-import { FolderCollectionsGrid } from "@/components/dashboard/folderCollectionsGrid";
 import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 
