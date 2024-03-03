@@ -7,6 +7,7 @@ import { Toaster } from "sonner";
 
 //* Vercel
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { ClientContexts } from "@/clientContexts";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,7 +24,7 @@ export default function RootLayout({ children }) {
       </head>
       <body className={inter.className}>
         <MantineProvider>
-          {children}
+          <ClientContexts>{children}</ClientContexts>
           <Toaster position="top-center" />
           <SpeedInsights />
         </MantineProvider>

@@ -1,9 +1,10 @@
 import { IconFolder } from "@tabler/icons-react";
 import Link from "next/link";
+import dateFormat from "dateformat";
 
 export function FolderCollectionsGrid({ folders }) {
   return (
-    <div className="w-full p-4 grid grid-cols-6 gap-3">
+    <div className="w-full p-4 grid grid-cols-6 gap-5">
       {folders?.map((folder) => (
         <Folder data={folder} key={folder?.id} />
       ))}
@@ -15,12 +16,20 @@ function Folder({ data }) {
   return (
     <Link
       href={`/dashboard/folders/${data?.id}`}
-      className="w-full rounded-md border border-gray-200 p-10 cursor-pointer"
+      className="w-full rounded-md border border-gray-200 cursor-pointer flex items-start justify-start flex-col relative"
     >
-      <div className="w-full bg-gray-200">
+      <div className="w-full bg-gray-200/70 p-10 flex items-center justify-center">
         <span>
-          <IconFolder size={30} />
+          <IconFolder size={60} stroke={1} color="gray" />
         </span>
+      </div>
+      <div className="w-full p-3 space-y-2">
+        <h3 className="text-base first-letter:capitalize text-wrap">
+          {data?.folder_name}
+        </h3>
+        <p className="text-sm text-gray-500">
+          CreatedAt: {dateFormat(data?.createdAt, "longDate")}
+        </p>
       </div>
     </Link>
   );

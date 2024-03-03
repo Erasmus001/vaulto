@@ -1,43 +1,49 @@
 "use client";
 
 import { useRef } from "react";
-import { useFormStatus } from "react-dom";
-import { createNewFolder } from "@/actions/client-actions/folders";
+import { createNewFolder } from "@/actions/mutations/folder";
 import { ModalButton } from "@/components/ui/Button";
 import { Modal } from "@mantine/core";
 import { toast } from "sonner";
+import { useQueryClient, useMutation } from "@tanstack/react-query";
+import { useFormStatus } from "react-dom";
 
 function NewFolderModal({ closeNewFolderModal, isNewFolderModalOpened }) {
+  const queryClient = useQueryClient();
+
   const { pending } = useFormStatus();
-  
   const folderNameRef = useRef(null);
 
+  // * Create new folder mutation..
+  const newFolderMutation = useMutation({
+    mutationFn: async (foldername) => {
+      const data = await createNewFolder(foldername);
+      return data;
+    },
+    onSuccess: (data) => {
+      if (data?.status === 400) {
+        toast.error(data?.message);
+        return;
+      }
+
+      if (data?.status === 201) {
+        toast.success(data?.message);
+        queryClient.invalidateQueries({ queryKey: ["folders"] });
+        closeNewFolderModal();
+      }
+    },
+  });
+
+  // * Create new folder handler..
   async function handleCreateNewFolder(event) {
     event.preventDefault();
-
     const foldername = folderNameRef.current?.value;
-
-    const response = await createNewFolder(foldername);
-
-    if (response?.status === 400) {
-      console.log(response, "res-api");
-      toast.error(response?.message);
-      return;
-    }
-
-    if (response?.status === 201) {
-      toast.success(response?.message);
-
-      setTimeout(() => {
-        closeNewFolderModal();
-      }, 1000);
-    }
+    await newFolderMutation.mutate(foldername);
   }
 
   return (
     <Modal
       opened={isNewFolderModalOpened}
-      centered
       size={"md"}
       padding={"md"}
       radius={"md"}

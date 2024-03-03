@@ -8,9 +8,7 @@ export async function createNewFolder(foldername, owner) {
     headers: {
       "Content-type": "application/json",
     },
-    next: {
-      revalidate: ["folders"],
-    },
+    cache: "reload",
   });
 
   const data = await handleResponse(response);
@@ -21,8 +19,16 @@ export async function getAllFolders() {
   const response = await fetch(`${NEXT_API_ENDPOINT}/folders`, {
     method: "GET",
     cache: "no-store",
-    next: { tags: ["folders"] },
   });
+
   const data = await handleResponse(response);
+  return data;
+}
+
+export async function searchFolder(query) {
+  const response = await fetch(`${NEXT_API_ENDPOINT}/folders/search?query${query}`);
+
+  const data = await handleResponse(response);
+  console.log(data, "search data");
   return data;
 }

@@ -199,11 +199,6 @@ export const sidebarLinks = [
   },
   {
     id: 4,
-    href: "/dashboard/favourites",
-    title: "Favourites",
-  },
-  {
-    id: 5,
     href: "/dashboard/trash",
     title: "Trash",
   },
