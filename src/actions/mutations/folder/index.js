@@ -17,7 +17,6 @@ export async function createNewFolder(foldername, owner) {
 
 export async function getAllFolders() {
   const response = await fetch(`${NEXT_API_ENDPOINT}/folders`, {
-    method: "GET",
     cache: "no-store",
   });
 
@@ -26,7 +25,9 @@ export async function getAllFolders() {
 }
 
 export async function searchFolder(query) {
-  const response = await fetch(`${NEXT_API_ENDPOINT}/folders/search?query${query}`);
+  const response = await fetch(
+    `${NEXT_API_ENDPOINT}/folders/search?query${query}`
+  );
 
   const data = await handleResponse(response);
   console.log(data, "search data");

@@ -1,12 +1,7 @@
 import { API_ENDPOINT } from "@/components/constants";
 
-export async function GET(request) {
-  const record = await fetch(
-    `${API_ENDPOINT}/api/collections/folders/records`,
-    {
-      method: "GET",
-    }
-  );
+export async function GET() {
+  const record = await fetch(`${API_ENDPOINT}/api/collections/folders/records`);
 
   const response = await record?.json();
 

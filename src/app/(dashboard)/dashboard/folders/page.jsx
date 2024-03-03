@@ -7,9 +7,9 @@ import { FolderHeader } from "@/components/dashboard/FolderHeader";
 import { Suspense, useEffect, useRef, useState } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { useQuery } from "@tanstack/react-query";
-import { FolderSkeletons } from "@/components/dashboard/skeletons/FolderSkeletons";
-import { useMutation } from "@tanstack/react-query";
 import { useDebouncedValue } from "@mantine/hooks";
+import Error from "./error";
+import { FolderSkeletons } from "@/components/dashboard/skeletons/FolderSkeletons";
 
 export default function FoldersPage() {
   const [folders, setFolders] = useState([]);
@@ -27,18 +27,6 @@ export default function FoldersPage() {
     },
   });
 
-  // const { data: searchResults } = useQuery({
-  //   queryKey: ["search-folders", debouncedSearchValue],
-  //   queryFn: async () => {
-  //     const response = await searchFolder(debouncedSearchValue);
-  //     setFolders(response?.items);
-  //     return response;
-  //   },
-  //   enabled: !debouncedSearchValue,
-  // });
-
-  // console.log(searchResults);
-
   useEffect(() => {
     if (!debouncedSearchValue) {
       setFolders(data);
@@ -55,8 +43,8 @@ export default function FoldersPage() {
 
       {/* //* Folders view */}
       <div className="w-full h-[calc(100%-80px)] p-4 overflow-y-auto">
-        <ErrorBoundary fallback={<p>Error occured</p>}>
-          <Suspense>
+        <ErrorBoundary fallback={<Error />}>
+          <Suspense fallback={<FolderSkeletons />}>
             <div className="w-full grid grid-cols-6 gap-4 p-2">
               {isLoading &&
                 [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].map((item) => (

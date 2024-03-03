@@ -1,10 +1,21 @@
 /* eslint-disable react/no-unescaped-entities */
+"use client";
 
 import Link from "next/link";
-import { signinUserWithEmailAndPassword } from "@/actions/server-actions/auth";
+// import { signinUserWithEmailAndPassword } from "@/actions/server-actions/auth";
 import { FormButton } from "@/components/ui/FormButton";
+import { signIn, useSession } from "next-auth/react";
 
 export default function SigninPage() {
+  async function handleSignin(event) {
+    event.preventDefault();
+
+    await signIn();
+  }
+
+  const session = useSession();
+  console.log(session, "session");
+
   return (
     <div className="min-w-screen min-h-screen py-5 flex items-center justify-center bg-[#f4f6f8] flex-col gap-y-6">
       <div className="w-full flex items-center justify-center flex-col gap-y-10 max-w-lg bg-white border p-7 py-10 rounded-xl shadow">
@@ -16,7 +27,7 @@ export default function SigninPage() {
         <form
           className="w-full flex items-center justify-center flex-col gap-4"
           autoComplete="on"
-          action={signinUserWithEmailAndPassword}
+          onSubmit={handleSignin}
         >
           <div className="w-full flex items-start justify-start flex-col gap-2 mt-3">
             <label htmlFor="email">Email</label>
