@@ -1,17 +1,19 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { createNewFolder } from "@/actions/mutations/folder";
-import { ModalButton } from "@/components/ui/Button";
 import { Modal } from "@mantine/core";
 import { toast } from "sonner";
 import { useQueryClient, useMutation } from "@tanstack/react-query";
-import { useFormStatus } from "react-dom";
+import { FormButtonSubmit } from "@/components/ui/FormButton";
+import { useAuth } from "@/clientContexts/AuthContext";
 
 function NewFolderModal({ closeNewFolderModal, isNewFolderModalOpened }) {
   const queryClient = useQueryClient();
+  const [isLoading, setIsLoading] = useState(false);
 
-  const { pending } = useFormStatus();
+  const { user } = useAuth();
+
   const folderNameRef = useRef(null);
 
   // * Create new folder mutation..
@@ -38,7 +40,15 @@ function NewFolderModal({ closeNewFolderModal, isNewFolderModalOpened }) {
   async function handleCreateNewFolder(event) {
     event.preventDefault();
     const foldername = folderNameRef.current?.value;
-    await newFolderMutation.mutate(foldername);
+
+    setIsLoading(true);
+    try {
+      await newFolderMutation.mutate({ foldername, ownerId: user?.id });
+    } catch (error) {
+      toast.error(error?.message);
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
@@ -66,11 +76,7 @@ function NewFolderModal({ closeNewFolderModal, isNewFolderModalOpened }) {
           />
         </div>
         <div className="w-full flex items-center justify-center">
-          <ModalButton
-            title="Create folder"
-            type={"submit"}
-            pending={pending}
-          />
+          <FormButtonSubmit isLoading={isLoading} title="Create folder" />
         </div>
       </form>
     </Modal>

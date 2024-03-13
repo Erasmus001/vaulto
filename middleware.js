@@ -1,6 +1,14 @@
-export { auth as middleware } from "auth";
+import { NextResponse } from "next/server";
+import { pb } from "./pocketbase/pocket-config";
 
-// Read more: https://nextjs.org/docs/app/building-your-application/routing/middleware#matcher
+// This function can be marked `async` if using `await` inside
+export function middleware(request) {
+  console.log(request);
+
+  console.log(pb.authStore);
+
+  // return NextResponse.redirect(new URL("/", request.url));
+}
 export const config = {
-  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)", "/dashboard/:path"],
+  matcher: ["/dashboard/:path"],
 };

@@ -23,10 +23,10 @@ export async function POST(request) {
 
   console.log(response, "api");
 
-  if (response?.code === 400) {
+  if (response?.data?.owner?.code === "validation_required") {
     return Response.json({
       status: response?.code,
-      message: response?.message,
+      message: response?.data?.owner?.message,
     });
   }
 

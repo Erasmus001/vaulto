@@ -22,7 +22,7 @@ export default function FoldersPage() {
     queryKey: ["folders"],
     queryFn: async () => {
       const response = await getAllFolders();
-      setFolders(response?.items);
+      setFolders(response);
       return response;
     },
   });

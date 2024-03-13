@@ -1,35 +1,27 @@
-import { NEXT_API_ENDPOINT } from "@/components/constants";
-import { handleResponse } from "@/helpers/handleSafeData";
+import { pb } from "../../../../pocketbase/pocket-config";
 
-export async function createNewFolder(foldername, owner) {
-  const response = await fetch(`${NEXT_API_ENDPOINT}/folders/create`, {
-    method: "POST",
-    body: JSON.stringify({ foldername, owner }),
-    headers: {
-      "Content-type": "application/json",
-    },
-    cache: "reload",
-  });
+export async function createNewFolder(folderData) {
+  const { foldername, ownerId } = folderData;
 
-  const data = await handleResponse(response);
-  return data;
+  const data = await pb
+    .collection("folders")
+    .create({ folder_name: foldername, owner_id: ownerId });
+
+  if (data?.created) {
+    return {
+      status: 201,
+      message: "Folder created successfully",
+      data: data,
+    };
+  }
 }
 
 export async function getAllFolders() {
-  const response = await fetch(`${NEXT_API_ENDPOINT}/folders`, {
-    cache: "no-store",
+  const data = await pb.collection("folders").getFullList({
+    sort: "-created",
+    expand: "files"
   });
 
-  const data = await handleResponse(response);
   return data;
 }
 
-export async function searchFolder(query) {
-  const response = await fetch(
-    `${NEXT_API_ENDPOINT}/folders/search?query${query}`
-  );
-
-  const data = await handleResponse(response);
-  console.log(data, "search data");
-  return data;
-}

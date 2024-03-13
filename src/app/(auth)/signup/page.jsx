@@ -1,15 +1,58 @@
 /* eslint-disable react/no-unescaped-entities */
 
-import { createUserWithEmailAndPassword } from "@/actions/server-actions/auth";
-import { FormButton } from "@/components/ui/FormButton";
+"use client";
+
+import { Fragment, useState } from "react";
+import { FormButtonSubmit } from "@/components/ui/FormButton";
 import Link from "next/link";
-import { Fragment } from "react";
+import { toast } from "sonner";
+import { generateUniqueUsername } from "@/lib";
+import { useRouter } from "next/navigation";
+import { useAuth } from "@/clientContexts/AuthContext";
 
 export default function SignupPage() {
+  const [value, setValue] = useState({
+    email: "",
+    password: "",
+  });
+  const [isLoading, setIsLoading] = useState(false);
+
+  const router = useRouter();
+  const { createUser } = useAuth();
+
+  async function handleSignup(event) {
+    event.preventDefault();
+
+    const authData = {
+      email: value?.email,
+      password: value?.password,
+      username: `user_${generateUniqueUsername()}`,
+      emailVisibility: true,
+      passwordConfirm: value?.password,
+    };
+
+    setIsLoading(true);
+    try {
+      const response = await createUser(authData);
+
+      if (response?.status === 201) {
+        toast.success(response?.message)
+
+        setTimeout(() => {
+          router.push('/signin')
+        }, 3000);
+      }
+    } catch (error) {
+      toast.error(error?.message);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
   return (
     <Fragment>
       <div className="min-w-screen min-h-screen py-5 flex items-center justify-center bg-[#f4f6f8] flex-col gap-y-6">
-        <div className="w-full flex items-center justify-center flex-col gap-y-20 max-w-lg bg-white border p-7 py-10 rounded-xl shadow">
+        <div className="w-full flex items-center justify-center flex-col gap-y-10 max-w-lg bg-white border p-7 py-10 rounded-xl shadow">
           <div className="flex items-center justify-center flex-col gap-5">
             <div className="w-full flex items-center justify-center flex-col gap-y-3">
               <h2 className="text-3xl font-semibold">Let's get started!</h2>
@@ -23,7 +66,7 @@ export default function SignupPage() {
           <form
             className="w-full flex items-center justify-center flex-col gap-6"
             autoComplete="on"
-            action={createUserWithEmailAndPassword}
+            onSubmit={handleSignup}
           >
             <div className="w-full flex items-start justify-start flex-col gap-2">
               <label htmlFor="email" className="text-sm">
@@ -36,6 +79,10 @@ export default function SignupPage() {
                 placeholder="johndoe@email.com"
                 className="w-full fllex items-start justify-start gap-3 p-3 border rounded-md"
                 autoComplete="email"
+                value={value.email}
+                onChange={(event) =>
+                  setValue({ ...value, email: event.target.value })
+                }
               />
             </div>
             <div className="w-full flex items-start justify-start flex-col gap-2">
@@ -49,10 +96,17 @@ export default function SignupPage() {
                 placeholder="***********"
                 className="w-full fllex items-start justify-start gap-3 p-3 border rounded-md"
                 autoComplete="password"
+                value={value.password}
+                onChange={(event) =>
+                  setValue({ ...value, password: event.target.value })
+                }
               />
             </div>
             <div className="w-full mt-5">
-              <FormButton title="Sign up" />
+              <FormButtonSubmit
+                title="Create free account"
+                isLoading={isLoading}
+              />
             </div>
           </form>
         </div>

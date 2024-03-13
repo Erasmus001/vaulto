@@ -1,7 +1,7 @@
 "use client";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import NextAuthSession from "./Providers";
+import AuthContextProvider from "./AuthContext";
 
 // Create a client
 const queryClient = new QueryClient({
@@ -13,8 +13,8 @@ const queryClient = new QueryClient({
 });
 export function ClientContexts({ children }) {
   return (
-    <NextAuthSession>
+    <AuthContextProvider>
       <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-    </NextAuthSession>
+    </AuthContextProvider>
   );
 }

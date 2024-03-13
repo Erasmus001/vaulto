@@ -1,69 +1,32 @@
-"use server";
+// "use server";
 
-const SERVER_API_ENDPOINT = process.env.NEXT_API_URL;
+import { pb } from "../../../pocketbase/pocket-config";
+
+// const SERVER_API_ENDPOINT = process.env.NEXT_PUBLIC_API_ENDPOINT;
 
 // * Create a user with Email & Password
-export async function createUserWithEmailAndPassword(formData) {
-  let identity = formData.get("identity");
-  let password = formData.get("password");
+export async function createUserWithEmailAndPassword(authData) {
+  const data = await pb.collection("users").create(authData);
 
-  const data = { identity, password };
-
-  const _data = await fetch(`${SERVER_API_ENDPOINT}/signup`, {
-    method: "POST",
-    headers: {
-      "Content-type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
-
-  const response = await _data?.json();
-  return response;
+  if (data?.created) {
+    return {
+      status: 201,
+      message: "Account created successfully",
+    };
+  }
 }
-
 
 // * Log user in with Email & Password
+export async function signinUserWithEmailAndPassword(authData) {
+  const data = await pb
+    .collection("users")
+    .authWithPassword(authData?.email, authData?.password);
 
-export async function signinUserWithEmailAndPassword(formData) {
-  let identity = formData.get("identity");
-  let password = formData.get("password");
-
-  const data = { identity, password };
-
-  const _data = await fetch(`${SERVER_API_ENDPOINT}/signin`, {
-    method: "POST",
-    headers: {
-      "Content-type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
-
-  const response = await _data?.json();
-  return response;
+  return data;
 }
-
 
 // * Send user reset email link
-export async function sendForgotPasswordEmail(formData) {
-  let email = formData.get("email");
-
-  const _data = await fetch(`${SERVER_API_ENDPOINT}/forgot-password`, {
-    method: "POST",
-    headers: {
-      "Content-type": "application/json",
-    },
-    body: JSON.stringify({ email }),
-  });
-
-  const response = await _data?.json();
-  return response;
-
-  console.log(identity);
-}
-
+export async function sendForgotPasswordEmail(formData) {}
 
 // * Reset user password
-export async function resetPassword(formData) {
-  let newPassword = formData.get("newPassword");
-  let confirmNewPassword = formData.get("confirmNewPassword");
-}
+export async function resetPassword(formData) {}

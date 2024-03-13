@@ -13,7 +13,7 @@ const handleServerError = async (response) => {
   return await response?.json();
 };
 
-// Simplify switch statement
+//* Simplify switch statement
 export const handleResponse = async (response) => {
   if (response?.ok) {
     const responseData = await response?.json();

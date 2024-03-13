@@ -1,6 +1,9 @@
+"use client";
+
 import { IconFolder } from "@tabler/icons-react";
 import Link from "next/link";
 import dateFormat from "dateformat";
+import { usePathname } from "next/navigation";
 
 export function FolderCollectionsGrid({ folders }) {
   return (
@@ -13,22 +16,24 @@ export function FolderCollectionsGrid({ folders }) {
 }
 
 function Folder({ data }) {
+  const pathname = usePathname();
+
   return (
     <Link
-      href={`/dashboard/folders/${data?.id}`}
-      className="w-full rounded-md border border-gray-200 cursor-pointer flex items-start justify-start flex-col relative"
+      href={`${pathname}/${data?.id}`}
+      className="w-full rounded-md border border-gray-200 cursor-pointer flex items-start justify-start flex-col relative hover:bg-gray-200/30 ease-in-out"
     >
       <div className="w-full bg-gray-200/70 p-10 flex items-center justify-center">
         <span>
-          <IconFolder size={60} stroke={1} color="gray" />
+          <IconFolder size={70} stroke={1} color="gray" />
         </span>
       </div>
       <div className="w-full p-3 space-y-2">
         <h3 className="text-base first-letter:capitalize text-wrap">
           {data?.folder_name}
         </h3>
-        <p className="text-sm text-gray-500">
-          CreatedAt: {dateFormat(data?.createdAt, "longDate")}
+        <p className="text-[13px] text-gray-500">
+          {dateFormat(data?.createdAt, "longDate")}
         </p>
       </div>
     </Link>
