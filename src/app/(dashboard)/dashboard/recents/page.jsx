@@ -6,7 +6,7 @@ import { IconFolder } from "@tabler/icons-react";
 import { useQuery } from "@tanstack/react-query";
 import dateFormat from "dateformat";
 
-export default function RecentsPage() {
+function RecentsPage() {
   // * Fetch all collections/folders
   const { data: recentUploads, isLoading } = useQuery({
     queryKey: ["folders"],
@@ -30,6 +30,8 @@ export default function RecentsPage() {
     </section>
   );
 }
+
+export default RecentsPage;
 
 function RecentUploadList({ data }) {
   return (

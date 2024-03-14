@@ -11,7 +11,7 @@ import { useDebouncedValue } from "@mantine/hooks";
 import Error from "./error";
 import { FolderSkeletons } from "@/components/dashboard/skeletons/FolderSkeletons";
 
-export default function FoldersPage() {
+function FoldersPage() {
   const [folders, setFolders] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -63,3 +63,6 @@ export default function FoldersPage() {
     </section>
   );
 }
+
+
+export default FoldersPage;

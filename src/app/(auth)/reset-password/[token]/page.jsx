@@ -5,7 +5,7 @@
 import { Fragment } from "react";
 import Link from "next/link";
 
-export default function ResetPasswordPage() {
+function ResetPasswordPage() {
   async function resetPassword() {}
 
   return (
@@ -73,3 +73,6 @@ export default function ResetPasswordPage() {
     </Fragment>
   );
 }
+
+
+export default ResetPasswordPage;

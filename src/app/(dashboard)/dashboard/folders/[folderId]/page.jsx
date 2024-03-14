@@ -1,3 +1,6 @@
-export default async function FolderPage() {
+async function FolderPage() {
   return <div>Folder Page</div>;
 }
+
+
+export default FolderPage;

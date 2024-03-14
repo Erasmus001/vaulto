@@ -10,7 +10,7 @@ import { generateUniqueUsername } from "@/lib";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/clientContexts/AuthContext";
 
-export default function SignupPage() {
+function SignupPage() {
   const [value, setValue] = useState({
     email: "",
     password: "",
@@ -127,3 +127,5 @@ export default function SignupPage() {
     </Fragment>
   );
 }
+
+export default SignupPage;

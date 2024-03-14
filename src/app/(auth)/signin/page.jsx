@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { useAuth } from "@/clientContexts/AuthContext";
 
-export default function SigninPage() {
+function SigninPage() {
   const [value, setValue] = useState({
     email: "",
     password: "",
@@ -122,3 +122,4 @@ export default function SigninPage() {
     </div>
   );
 }
+export default SigninPage;

@@ -1,12 +1,12 @@
 /* eslint-disable react/no-unescaped-entities */
-'use client'
+"use client";
 
 import { Fragment } from "react";
 import Link from "next/link";
 import { FormButton } from "@/components/ui/FormButton";
 import { sendForgotPasswordEmail } from "@/actions/server-actions/auth";
 
-export default function ForgotPasswordPage() {
+function ForgotPasswordPage() {
   return (
     <Fragment>
       <div className="min-w-screen min-h-screen py-5 flex items-center justify-center bg-[#f4f6f8] flex-col gap-y-4">
@@ -46,8 +46,8 @@ export default function ForgotPasswordPage() {
           </Link>
         </div>
       </div>
-
-      {/* {showSuccessMessage && <VerificationSentModal />} */}
     </Fragment>
   );
 }
+
+export default ForgotPasswordPage

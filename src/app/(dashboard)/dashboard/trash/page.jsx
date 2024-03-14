@@ -1,3 +1,5 @@
-export default function TrashPage() {
+function TrashPage() {
   return <div>Trash Page</div>;
 }
+
+export default TrashPage;

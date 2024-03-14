@@ -1,4 +1,4 @@
-export default function SettingsLayout({ children }) {
+function SettingsLayout({ children }) {
   return (
     <main className="w-full h-full flex items-start justify-start">
       {/* Main Settings View */}
@@ -8,3 +8,5 @@ export default function SettingsLayout({ children }) {
     </main>
   );
 }
+
+export default SettingsLayout;
