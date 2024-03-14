@@ -8,5 +8,5 @@ if (process.env.NODE_ENV === "production") {
   url = "http://127.0.0.1:8090";
 }
 
-export const pb = new Pocketbase(rul);
+export const pb = new Pocketbase(url);
 pb.autoCancellation(false);
