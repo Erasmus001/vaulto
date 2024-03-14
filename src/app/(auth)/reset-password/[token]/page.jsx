@@ -1,5 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 
+'use client'
+
 import { Fragment } from "react";
 import Link from "next/link";
 
