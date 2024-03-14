@@ -6,6 +6,7 @@ import { Toaster } from "sonner";
 
 //* Vercel
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react"
 import { ClientContexts } from "@/clientContexts";
 
 export const metadata = {
@@ -24,6 +25,7 @@ export default function RootLayout({ children }) {
           <ClientContexts>{children}</ClientContexts>
           <Toaster position="top-center" richColors />
           <SpeedInsights />
+          <Analytics />
         </MantineProvider>
       </body>
     </html>
