@@ -47,7 +47,7 @@ export default function FoldersPage() {
           <Suspense fallback={<FolderSkeletons />}>
             <div className="w-full grid grid-cols-6 gap-4 p-2">
               {isLoading &&
-                [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].map((item) => (
+                [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((item) => (
                   <FolderSkeletons key={item} />
                 ))}
             </div>

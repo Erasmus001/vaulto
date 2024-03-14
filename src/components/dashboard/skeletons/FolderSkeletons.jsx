@@ -7,12 +7,12 @@ export function FolderSkeletons() {
         <Skeleton width={"100%"} height={"100%"} />
       </div>
       <div className="w-full p-3 space-y-2">
-        <h3 className="text-base first-letter:capitalize text-wrap">
+        <div className="text-base first-letter:capitalize text-wrap">
           <Skeleton width={"100%"} height={20} />
-        </h3>
-        <p className="text-sm text-gray-500">
+        </div>
+        <div className="text-sm text-gray-500">
           <Skeleton width={"70%"} height={20} />
-        </p>
+        </div>
       </div>
     </div>
   );

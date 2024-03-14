@@ -19,7 +19,10 @@ function NewFolderModal({ closeNewFolderModal, isNewFolderModalOpened }) {
   // * Create new folder mutation..
   const newFolderMutation = useMutation({
     mutationFn: async (foldername) => {
+      setIsLoading(true);
       const data = await createNewFolder(foldername);
+      setIsLoading(false);
+
       return data;
     },
     onSuccess: (data) => {
@@ -41,13 +44,10 @@ function NewFolderModal({ closeNewFolderModal, isNewFolderModalOpened }) {
     event.preventDefault();
     const foldername = folderNameRef.current?.value;
 
-    setIsLoading(true);
     try {
       await newFolderMutation.mutate({ foldername, ownerId: user?.id });
     } catch (error) {
       toast.error(error?.message);
-    } finally {
-      setIsLoading(false);
     }
   }
 
@@ -58,7 +58,7 @@ function NewFolderModal({ closeNewFolderModal, isNewFolderModalOpened }) {
       padding={"md"}
       radius={"md"}
       onClose={closeNewFolderModal}
-      title="Create new folder"
+      title="Create New Folder"
     >
       <form
         onSubmit={handleCreateNewFolder}
@@ -70,9 +70,13 @@ function NewFolderModal({ closeNewFolderModal, isNewFolderModalOpened }) {
             name="folder-name"
             id="folder-name"
             required
-            className="w-full py-2.5 px-3 rounded-md border border-gray-400/80"
+            className="w-full py-2.5 px-3 rounded-md border border-gray-400/80 first-letter:capitalize"
             placeholder="Enter folder name..."
             ref={folderNameRef}
+            autoFocus={true}
+            maxLength={30}
+            minLength={2}
+            title="Folder name should not be less than 2 or more than 30"
           />
         </div>
         <div className="w-full flex items-center justify-center">

@@ -5,7 +5,7 @@ export async function createNewFolder(folderData) {
 
   const data = await pb
     .collection("folders")
-    .create({ folder_name: foldername, owner_id: ownerId });
+    .create({ folder_name: foldername, owner_id: ownerId, type: "Folder" });
 
   if (data?.created) {
     return {
@@ -19,9 +19,8 @@ export async function createNewFolder(folderData) {
 export async function getAllFolders() {
   const data = await pb.collection("folders").getFullList({
     sort: "-created",
-    expand: "files"
+    expand: "files",
   });
 
   return data;
 }
-
