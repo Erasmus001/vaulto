@@ -1,3 +1,5 @@
+'use client';
+
 import {
   createUserWithEmailAndPassword,
   signinUserWithEmailAndPassword,
@@ -8,32 +10,38 @@ import { pb } from "../../pocketbase/pocket-config";
 const AuthContext = createContext({
   user: null,
   token: null,
+  isAuth: null,
   signin: () => Promise,
   createUser: () => Promise,
-  logout: () => {}
+  logout: () => {},
 });
 
 export const useAuth = () => useContext(AuthContext);
 
 const AuthContextProvider = ({ children }) => {
+  const localAuth = localStorage.getItem("isAuth")
+
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
+  const [isAuth, setIsAuth] = useState(localAuth || null);
 
   useEffect(() => {
-    if (pb.authStore.model) {
+    if (isAuth) {
       setUser(pb.authStore.model);
     } else setUser(null);
-  }, []);
+  }, [isAuth]);
 
-  // Create user
+  //* Create user
   async function createUser(authData) {
     const data = await createUserWithEmailAndPassword(authData);
     return data;
   }
 
+  //* Signin user
   async function signin(authData) {
     const data = await signinUserWithEmailAndPassword(authData);
     setUser(data);
+    setIsAuth(window.localStorage.setItem("isAuth", true));
     setToken(data?.token);
 
     if (data?.record?.created) {
@@ -44,8 +52,10 @@ const AuthContextProvider = ({ children }) => {
     }
   }
 
+  //* Sign out user
   function logout() {
-    return pb.authStore.clear()
+    setIsAuth(window.localStorage.removeItem("isAuth"));
+    return pb.authStore.clear();
   }
 
   const globalVals = {
@@ -53,7 +63,8 @@ const AuthContextProvider = ({ children }) => {
     createUser,
     signin,
     token,
-    logout
+    logout,
+    isAuth,
   };
 
   return (

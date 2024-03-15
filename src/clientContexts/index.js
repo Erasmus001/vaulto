@@ -2,6 +2,7 @@
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import AuthContextProvider from "./AuthContext";
+import { ProtectedPages } from "@/app/ProtectedPages";
 
 // Create a client
 const queryClient = new QueryClient({
@@ -14,7 +15,11 @@ const queryClient = new QueryClient({
 export function ClientContexts({ children }) {
   return (
     <AuthContextProvider>
-      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+      <ProtectedPages>
+        <QueryClientProvider client={queryClient}>
+          {children}
+        </QueryClientProvider>
+      </ProtectedPages>
     </AuthContextProvider>
   );
 }

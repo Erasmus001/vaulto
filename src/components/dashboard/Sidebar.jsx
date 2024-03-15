@@ -1,8 +1,13 @@
+"use client";
+
 import { sidebarLinks } from "@/dummy";
 import { Fragment } from "react";
-import { Sidenavlink } from "./Sidenavlink";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 export default function Sidebar() {
+  const pathname = usePathname();
+
   return (
     <section className="w-full h-full flex items-start justify-start flex-col border-r border-gray-200">
       {/* Logo */}
@@ -12,13 +17,33 @@ export default function Sidebar() {
 
       <div className="w-full h-[calc(100vh-64px)] flex items-start justify-between flex-col pt-7">
         <nav className="w-full flex items-start justify-start flex-col flex-1">
-          {sidebarLinks?.map((link) => (
-            <Sidenavlink href={link?.href} title={link?.title} key={link?.id} />
-          ))}
+          {sidebarLinks?.map((sidebarLink) => {
+            const isActiveLink =
+              pathname === sidebarLink?.href ||
+              pathname.includes(sidebarLink?.href);
+
+            return (
+              <Link
+                key={sidebarLink?.id}
+                href={sidebarLink?.href}
+                className={`w-full hover:bg-gray-200/70 hover:transition-all p-3 pl-7 text-sm ${
+                  isActiveLink &&
+                  "bg-gray-200 text-black font-medium hover:transition-transform border-l-4 border-black pl-[24px] hover:bg-gray-200"
+                }`}
+              >
+                {sidebarLink?.title}
+              </Link>
+            );
+          })}
         </nav>
 
         <Fragment>
-          <Sidenavlink href={"/dashboard/settings"} title={"Settings"} />
+          <Link
+            href={"/dashboard/settings"}
+            className={`w-full hover:bg-gray-200/70 hover:transition-all p-3 pl-7 text-sm`}
+          >
+            Settings
+          </Link>
         </Fragment>
       </div>
     </section>

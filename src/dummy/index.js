@@ -184,22 +184,22 @@ export const differenceData = [
 export const sidebarLinks = [
   {
     id: 1,
-    href: "/dashboard",
     title: "Dashboard",
+    href: "/dashboard/overview",
   },
   {
     id: 2,
-    href: "/dashboard/folders",
     title: "Folders",
+    href: "/dashboard/folders",
   },
   {
     id: 3,
-    href: "/dashboard/recents",
     title: "Recents",
+    href: "/dashboard/recents",
   },
   {
     id: 4,
-    href: "/dashboard/trash",
     title: "Trash",
+    href: "/dashboard/trash",
   },
 ];

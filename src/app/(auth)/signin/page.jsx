@@ -35,8 +35,8 @@ function SigninPage() {
         toast.success(response?.message);
 
         setTimeout(() => {
-          router.replace("/dashboard");
-        }, 2000);
+          router.replace("/dashboard/overview");
+        }, 1500);
       } else {
         toast.error(response?.message);
         return;

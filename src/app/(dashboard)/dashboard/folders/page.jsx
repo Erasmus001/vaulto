@@ -1,10 +1,10 @@
 "use client";
 
-import { getAllFolders, searchFolder } from "@/actions/mutations/folder";
-import { NoDataAvailable } from "@/components/dashboard/EmptyStates";
+import { getAllFolders } from "@/actions/mutations/folder";
+import { NoFoldersAvailable } from "@/components/dashboard/EmptyStates";
 import { FolderCollectionsGrid } from "@/components/dashboard/FolderCollectionsGrid";
 import { FolderHeader } from "@/components/dashboard/FolderHeader";
-import { Suspense, useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { useQuery } from "@tanstack/react-query";
 import { useDebouncedValue } from "@mantine/hooks";
@@ -41,28 +41,28 @@ function FoldersPage() {
         setSearchQuery={setSearchQuery}
       />
 
-      {/* //* Folders view */}
-      <div className="w-full h-[calc(100%-80px)] p-4 overflow-y-auto">
-        <ErrorBoundary fallback={<Error />}>
-          <Suspense fallback={<FolderSkeletons />}>
-            <div className="w-full grid grid-cols-6 gap-4 p-2">
-              {isLoading &&
-                [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((item) => (
-                  <FolderSkeletons key={item} />
-                ))}
-            </div>
+      <div className="w-full h-[calc(100%-80px)]">
+        <div className={`w-full h-full overflow-y-auto ${folders?.length > 1 ? "p-2" : "p-5"}`}>
+          <ErrorBoundary fallback={<Error />}>
+            <Suspense fallback={<FolderSkeletons />}>
+              <div className="w-full grid grid-cols-6 gap-4 bg-blue-300">
+                {isLoading &&
+                  Array(12).map((item) => <FolderSkeletons key={item} />)}
+              </div>
 
-            {folders?.items?.length < 1 ? (
-              <NoDataAvailable />
-            ) : (
-              <FolderCollectionsGrid folders={folders} />
-            )}
-          </Suspense>
-        </ErrorBoundary>
+              {!isLoading && folders?.length >= 1 && (
+                <FolderCollectionsGrid folders={folders} />
+              )}
+
+              {!isLoading && folders?.length < 1 && (
+                <NoFoldersAvailable title={"No folders created"} />
+              )}
+            </Suspense>
+          </ErrorBoundary>
+        </div>
       </div>
     </section>
   );
 }
-
 
 export default FoldersPage;
