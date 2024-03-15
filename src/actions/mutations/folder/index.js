@@ -58,5 +58,20 @@ export async function getFolder(folderId) {
 
 export async function deleteFolder(folderId) {
   const data = await pb.collection("folders").delete(folderId);
-  console.log(data);
+
+  return {
+    status: 200,
+    message: "Folder deleted successfully",
+  };
+}
+
+export async function updateFolder(obj) {
+  const { data, folderId } = obj;
+
+  const response = await pb.collection("folders").update(folderId, data);
+
+  return {
+    status: 201,
+    message: "Folder updated successfully",
+  };
 }

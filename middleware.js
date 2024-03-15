@@ -7,7 +7,7 @@ export function middleware(request) {
 
   console.log(pb.authStore);
 
-  // return NextResponse.redirect(new URL("/", request.url));
+  return NextResponse.redirect(new URL("/signin", request.url));
 }
 export const config = {
   matcher: ["/dashboard/:path"],

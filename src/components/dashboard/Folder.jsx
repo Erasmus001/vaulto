@@ -11,6 +11,7 @@ import { useDisclosure } from "@mantine/hooks";
 import { deleteFolder } from "@/actions/mutations/folder";
 import { useQueryClient, useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
+import { EditFolderModal } from "./modals/EditFoldernameModal";
 
 function Folder({ data }) {
   const pathname = usePathname();
@@ -21,9 +22,12 @@ function Folder({ data }) {
     { open: openDeleteModal, close: closeDeleteModal },
   ] = useDisclosure(false);
 
+  const [isEditModalOpened, { open: openEditModal, close: closeEditModal }] =
+    useDisclosure(false);
+
   const handleDeleteFolderMutation = useMutation({
-    mutationFn: async (id) => {
-      const response = await deleteFolder(data?.id);
+    mutationFn: async (id, newData) => {
+      const response = await deleteFolder(data?.id, newData);
       return response;
     },
     onSuccess: () => {
@@ -43,7 +47,11 @@ function Folder({ data }) {
           <span>
             <IconFolder size={70} stroke={1} color="gray" />
           </span>
-          <FolderDropdown openDeleteModal={openDeleteModal} href={data?.id} />
+          <FolderDropdown
+            openDeleteModal={openDeleteModal}
+            href={data?.id}
+            openEditModal={openEditModal}
+          />
         </div>
         <div className="w-full p-3 space-y-2">
           <Link
@@ -63,6 +71,14 @@ function Folder({ data }) {
           opened={isDeleteModalOpened}
           onDelete={handleFolderDelete}
           onClose={closeDeleteModal}
+        />
+      )}
+
+      {isEditModalOpened && (
+        <EditFolderModal
+          closeEditModal={closeEditModal}
+          isEditModalOpened={isEditModalOpened}
+          folder={data}
         />
       )}
     </Fragment>
