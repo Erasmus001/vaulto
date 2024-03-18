@@ -27,9 +27,6 @@ const AuthContextProvider = ({ children }) => {
 
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
-  // const [isAuth, setIsAuth] = useState(
-  //   window.localStorage.getItem("isAuth") || false
-  // );
 
   useEffect(() => {
     if (isAuth) {
@@ -47,7 +44,7 @@ const AuthContextProvider = ({ children }) => {
   async function signin(authData) {
     const data = await signinUserWithEmailAndPassword(authData);
     setUser(data);
-    setIsAuth(window.localStorage.setItem("isAuth", true));
+    setIsAuth(data?.record);
     setToken(data?.token);
 
     if (data?.record?.created) {
@@ -60,7 +57,7 @@ const AuthContextProvider = ({ children }) => {
 
   //* Sign out user
   function logout() {
-    setIsAuth(window.localStorage.removeItem("isAuth"));
+    setIsAuth(null);
     return pb.authStore.clear();
   }
 
