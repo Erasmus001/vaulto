@@ -6,6 +6,7 @@ import {
 } from "@/actions/server-actions/auth";
 import { createContext, useContext, useState, useEffect } from "react";
 import { pb } from "../../pocketbase/pocket-config";
+import { useLocalStorage } from "@mantine/hooks";
 
 const AuthContext = createContext({
   user: null,
@@ -19,9 +20,16 @@ const AuthContext = createContext({
 export const useAuth = () => useContext(AuthContext);
 
 const AuthContextProvider = ({ children }) => {
+  const [isAuth, setIsAuth] = useLocalStorage({
+    key: "isAuth",
+    defaultValue: null,
+  });
+
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
-  const [isAuth, setIsAuth] = useState(window.localStorage.getItem("isAuth") || false);
+  // const [isAuth, setIsAuth] = useState(
+  //   window.localStorage.getItem("isAuth") || false
+  // );
 
   useEffect(() => {
     if (isAuth) {
