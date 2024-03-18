@@ -21,7 +21,7 @@ export const useAuth = () => useContext(AuthContext);
 const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
-  const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth") || false);
+  const [isAuth, setIsAuth] = useState(window.localStorage.getItem("isAuth") || false);
 
   useEffect(() => {
     if (isAuth) {
