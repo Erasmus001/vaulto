@@ -32,14 +32,14 @@ export const DeleteModal = ({ opened, onClose, onDelete }) => {
 
         <div className="w-full flex items-center justify-center gap-5">
           <button
-            className="w-full p-3 rounded-md cursor-pointer bg-gray-400/30 hover:bg-gray-400/50 text-black font-semibold transition-all ease-in-out"
+            className="w-full p-3 rounded-md cursor-pointer bg-gray-400/30 hover:bg-gray-400/50 text-black transition-all ease-in-out"
             type="button"
             onClick={onClose}
           >
             Cancel
           </button>
           <button
-            className="w-full p-3 rounded-md cursor-pointer font-semibold bg-red-500 hover:bg-red-600 text-white transition-all ease-in-out"
+            className="w-full p-3 rounded-md cursor-pointer bg-red-400 hover:bg-red-500 text-white transition-all ease-in-out"
             type="button"
             onClick={onDelete}
           >
@@ -80,14 +80,14 @@ export const DeleteModal = ({ opened, onClose, onDelete }) => {
 
 //         <div className="w-full flex items-center justify-center gap-5">
 //           <button
-//             className="w-full p-3 rounded-md cursor-pointer bg-gray-400/30 hover:bg-gray-400/50 text-black font-semibold transition-all ease-in-out"
+//             className="w-full p-3 rounded-md cursor-pointer bg-gray-400/30 hover:bg-gray-400/50 text-black transition-all ease-in-out"
 //             type="button"
 //             onClick={onClose}
 //           >
 //             Cancel
 //           </button>
 //           <button
-//             className="w-full p-3 rounded-md cursor-pointer font-semibold bg-red-500 hover:bg-red-600 text-white transition-all ease-in-out"
+//             className="w-full p-3 rounded-md cursor-pointer bg-red-500 hover:bg-red-600 text-white transition-all ease-in-out"
 //             type="button"
 //             onClick={onUserDelete}
 //           >

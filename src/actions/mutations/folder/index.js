@@ -18,8 +18,6 @@ export async function createNewFolder(folderData) {
 
 export async function createNewIdFolder(folderData) {
   const { foldername, ownerId, folderId } = folderData;
-  // console.log(folderData);
-  // return;
 
   const data = await pb.collection("folders").create({
     folder_name: foldername,
@@ -44,7 +42,7 @@ export async function createNewIdFolder(folderData) {
 
 export async function getAllFolders() {
   const data = await pb.collection("folders").getFullList({
-    sort: "-created",
+    sort: "created",
     expand: "files",
   });
 
@@ -74,4 +72,14 @@ export async function updateFolder(obj) {
     status: 201,
     message: "Folder updated successfully",
   };
+}
+
+export async function getInnerFolders(folderId) {
+  const data = await pb.collection("folders").getFullList({
+    filter: `(${folderId} = 'qh9bj1zy0jhs0r8')`,
+  });
+
+  console.log(data, 'api');
+
+  return data
 }

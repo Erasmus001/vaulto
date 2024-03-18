@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import {
   createUserWithEmailAndPassword,
@@ -19,11 +19,9 @@ const AuthContext = createContext({
 export const useAuth = () => useContext(AuthContext);
 
 const AuthContextProvider = ({ children }) => {
-  const localAuth = localStorage.getItem("isAuth")
-
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
-  const [isAuth, setIsAuth] = useState(localAuth || null);
+  const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth") || false);
 
   useEffect(() => {
     if (isAuth) {

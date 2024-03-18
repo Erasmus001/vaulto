@@ -3,7 +3,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { FolderIdHeader } from "./components/FolderIdHeader";
 import { useParams } from "next/navigation";
-import { getFolder } from "@/actions/mutations/folder";
+import { getFolder, getInnerFolders } from "@/actions/mutations/folder";
 
 function FolderPage() {
   const { folderId } = useParams();
@@ -12,6 +12,14 @@ function FolderPage() {
     queryKey: ["folder", folderId],
     queryFn: async () => {
       const data = await getFolder(folderId);
+      return data;
+    },
+  });
+
+  const { data: folders } = useQuery({
+    queryKey: ["folder", folderId],
+    queryFn: async () => {
+      const data = await getInnerFolders(folderId);
       return data;
     },
   });
