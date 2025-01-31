@@ -42,7 +42,7 @@ export async function createNewIdFolder(folderData) {
 
 export async function getAllFolders() {
   const data = await pb.collection("folders").getFullList({
-    sort: "created",
+    sort: "-created",
     expand: "files",
   });
 

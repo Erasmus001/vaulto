@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
       <body>
         <MantineProvider>
           <ClientContexts>{children}</ClientContexts>
-          <Toaster position="top-center" richColors />
+          <Toaster richColors />
           <SpeedInsights />
           <Analytics />
         </MantineProvider>

@@ -1,16 +1,18 @@
 "use client";
 
 import { useAuth } from "@/clientContexts/AuthContext";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Fragment, useEffect } from "react";
 
 export function ProtectedPages({ children }) {
   const { isAuth } = useAuth();
+
   const router = useRouter();
+  const path = usePathname();
 
   useEffect(() => {
     const checkAuthState = () => {
-      if (!isAuth) {
+      if (path !== "/" && !isAuth) {
         router.replace("/signin");
       }
 

@@ -36,10 +36,10 @@ function SignupPage() {
       const response = await createUser(authData);
 
       if (response?.status === 201) {
-        toast.success(response?.message)
+        toast.success(response?.message);
 
         setTimeout(() => {
-          router.push('/signin')
+          router.replace("/dashboard");
         }, 3000);
       }
     } catch (error) {
@@ -51,8 +51,8 @@ function SignupPage() {
 
   return (
     <Fragment>
-      <div className="min-w-screen min-h-screen py-5 flex items-center justify-center bg-[#f4f6f8] flex-col gap-y-6">
-        <div className="w-full flex items-center justify-center flex-col gap-y-10 max-w-lg bg-white border p-7 py-10 rounded-xl shadow">
+      <div className="min-w-screen min-h-screen py-5 flex items-center justify-center  flex-col gap-y-6">
+        <div className="w-full flex items-center justify-center flex-col gap-y-10 max-w-lg p-7 py-10 rounded-xl">
           <div className="flex items-center justify-center flex-col gap-5">
             <div className="w-full flex items-center justify-center flex-col gap-y-3">
               <h2 className="text-3xl font-semibold">Let's get started!</h2>
